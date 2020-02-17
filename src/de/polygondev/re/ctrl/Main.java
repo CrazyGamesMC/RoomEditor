@@ -1,4 +1,4 @@
-package de.polygondev.hjp.ctrl;
+package de.polygondev.re.ctrl;
 
 public class Main {
 
