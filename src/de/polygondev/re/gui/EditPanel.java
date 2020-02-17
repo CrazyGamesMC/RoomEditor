@@ -11,7 +11,7 @@ public class EditPanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(Color.GRAY);
         g.fillRect(0,0,getWidth(),getHeight());
 
 

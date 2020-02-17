@@ -5,6 +5,7 @@ import de.cg.utils.files.CGFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Project {
 
@@ -12,20 +13,24 @@ public class Project {
 
     private String objectsPath = "objects.re";
 
-    public ArrayList<GameObject> registeredObject = new ArrayList<>();
+    public HashMap<String, RoomObject> registeredObject = new HashMap<>();
 
-    public Project(String path) {
+    public ArrayList<RoomObject> placedObjects = new ArrayList<>();
+
+    public CGFile cgf;
+
+    public Project(String path, boolean overwrite) {
         this.projectPath = path;
+
+        initFiles(path, overwrite);
     }
 
-    private void initFiles(String path) {
+    private void initFiles(String path, boolean overwrite) {
         //Project path
         try {
-            CGFile cgf = new CGFile(path);
+            this.cgf = new CGFile(path);
 
-            cgf.getFile().createNewFile();
-
-
+            if (!cgf.getFile().exists() || overwrite) cgf.getFile().createNewFile();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,6 +8,8 @@ public class MainWindow extends JFrame {
 
     private EditPanel editPanel = new EditPanel();
 
+    private ObjectPickerPanel objectPickerPanel = new ObjectPickerPanel();
+
     private JMenuBar menuBar = new JMenuBar();
 
     private JMenu menuFile = new JMenu("File");
@@ -28,13 +30,17 @@ public class MainWindow extends JFrame {
         initMenuBar();
 
         editPanel.setBounds(300, 50, 950, 600);
+        add(editPanel);
+
+        objectPickerPanel.setBounds(30, 50, 240, 600);
+        add(objectPickerPanel);
 
     }
 
     private void initMenuBar() {
         fileNew.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(ActionEvent e) {
                 NewProjectWindow newProjectWindow = new NewProjectWindow();
             }
         });
@@ -42,6 +48,12 @@ public class MainWindow extends JFrame {
         menuFile.add(fileSave);
         menuFile.add(fileLoad);
 
+        objectAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               new AddObjectWindow();
+            }
+        });
         menuObject.add(objectAdd);
 
         menuBar.add(menuFile);
